@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 
 class Form extends Component {
+    state = {
+        data: {}
+    };
+
+    handleChange = ({ currentTarget: input }) => {
+        const data = { ...this.state.data };
+        data[input.name] = input.value;
+        this.setState({ data });
+    };
+
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Submitted');
+        const data = this.state.data;
+        console.log(data);
     };
 
     render() {
@@ -15,6 +26,7 @@ class Form extends Component {
                         id="doctor"
                         name="doctor"
                         placeholder="Find a Doc"
+                        onChange={this.handleChange}
                     />
                 </div>
 
@@ -24,6 +36,7 @@ class Form extends Component {
                         placeholder="Zip Code"
                         id="zipCode"
                         name="zipCode"
+                        onChange={this.handleChange}
                     />
                 </div>
 
