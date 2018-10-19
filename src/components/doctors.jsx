@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Form from './form';
+import Results from './results';
 
 class Doctors extends Component {
     state = {
-        formData: {}
+        formData: {},
+        results: []
     };
 
     handleSubmit = (e) => {
@@ -27,17 +29,21 @@ class Doctors extends Component {
             }&location=29.75020,-95.795104,100&limit=10&user_key=${key}`
         )
             .then((res) => res.json())
-            .then((result) => console.log(result));
+            .then((result) => {
+                const doctors = result.data;
+                this.setState({ results: doctors });
+            });
     };
 
     render() {
         return (
             <div className="container">
-                <h1>Find a Doctor</h1>
+                <h2>Find a Doctor</h2>
                 <Form
                     onSubmit={this.handleSubmit}
                     onChange={this.handleChange}
                 />
+                <Results result={this.state.results} />
             </div>
         );
     }
