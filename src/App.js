@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './components/navbar';
-import Form from './components/form';
+import Doctors from './components/doctors';
 
 import './App.css';
 
@@ -9,10 +9,7 @@ class App extends Component {
         return (
             <div className="App">
                 <NavBar />
-                <div className="container">
-                    <h1>Find a Doctor</h1>
-                    <Form />
-                </div>
+                <Doctors />
             </div>
         );
     }
