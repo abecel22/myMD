@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Cards from './common/cards';
 
 class Results extends Component {
     render() {
@@ -13,6 +14,7 @@ class Results extends Component {
                         </li>
                     ))}
                 </ul>
+                <Cards />
             </div>
         );
     }
