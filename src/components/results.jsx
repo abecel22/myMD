@@ -6,15 +6,8 @@ class Results extends Component {
         return (
             <div>
                 <h1>Doctor Search Results</h1>
-                <ul>
-                    {this.props.result.map((result) => (
-                        <li key={result.uid}>
-                            {result.profile.first_name}
-                            {result.profile.last_name}
-                        </li>
-                    ))}
-                </ul>
-                <Cards />
+
+                <Cards results={this.props.result} />
             </div>
         );
     }
