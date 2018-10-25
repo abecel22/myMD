@@ -5,7 +5,7 @@ class Results extends Component {
     render() {
         return (
             <div>
-                <h1>Doctor Search Results</h1>
+                {this.props.result.length > 0 && <h1>Doctor Search Results</h1>}
 
                 <Cards results={this.props.result} />
             </div>

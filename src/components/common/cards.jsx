@@ -18,7 +18,8 @@ class Cards extends Component {
                                     />
                                 </span>
                                 <span class="col-sm-12">
-                                    {result.specialties[0].actor}
+                                    {result.specialties > 0 &&
+                                        result.specialties[0].actor}
                                 </span>
                             </li>
                             <li className="list-group-item">
