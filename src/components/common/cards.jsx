@@ -11,13 +11,13 @@ class Cards extends Component {
                         } ${result.profile.last_name}`}</div>
                         <ul className="list-group list-group-flush">
                             <li className="list-group-item">
-                                <span class="col-sm">
+                                <span className="col-sm">
                                     <img
                                         src={result.profile.image_url}
                                         alt=""
                                     />
                                 </span>
-                                <span class="col-sm-12">
+                                <span className="col-sm-12">
                                     {result.specialties > 0 &&
                                         result.specialties[0].actor}
                                 </span>

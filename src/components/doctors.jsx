@@ -5,11 +5,13 @@ import Results from './results';
 class Doctors extends Component {
     state = {
         formData: {},
-        results: []
+        results: [],
+        location: ''
     };
 
     handleSubmit = (e) => {
         e.preventDefault();
+        this.makeGeoAPICall();
         this.makeAPICall();
     };
 
@@ -17,6 +19,20 @@ class Doctors extends Component {
         const formData = { ...this.state.formData };
         formData[input.name] = input.value;
         this.setState({ formData });
+    };
+
+    makeGeoAPICall = () => {
+        const geoKey = process.env.REACT_APP_SECRET_KEY;
+        fetch(
+            `https://maps.googleapis.com/maps/api/geocode/json?address=77494&key=${geoKey}`
+        )
+            .then((res) => res.json())
+            .then((result) => {
+                console.log(result);
+                const latitude = result.results[0].geometry.location.lat;
+                const longitude = result.results[0].geometry.location.lng;
+                this.setState({ location: `${latitude},${longitude}` });
+            });
     };
 
     makeAPICall = () => {
