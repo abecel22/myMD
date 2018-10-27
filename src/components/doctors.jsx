@@ -12,7 +12,6 @@ class Doctors extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.makeGeoAPICall();
-        this.makeAPICall();
     };
 
     handleChange = ({ currentTarget: input }) => {
@@ -23,8 +22,11 @@ class Doctors extends Component {
 
     makeGeoAPICall = () => {
         const geoKey = process.env.REACT_APP_SECRET_KEY;
+        const formData = this.state.formData;
         fetch(
-            `https://maps.googleapis.com/maps/api/geocode/json?address=77494&key=${geoKey}`
+            `https://maps.googleapis.com/maps/api/geocode/json?address=${
+                formData.zipCode
+            }&key=${geoKey}`
         )
             .then((res) => res.json())
             .then((result) => {
@@ -32,17 +34,19 @@ class Doctors extends Component {
                 const latitude = result.results[0].geometry.location.lat;
                 const longitude = result.results[0].geometry.location.lng;
                 this.setState({ location: `${latitude},${longitude}` });
+                this.makeAPICall();
             });
     };
 
     makeAPICall = () => {
         const key = process.env.REACT_APP_SECRET_CODE;
         const formData = this.state.formData;
+        const coordinates = this.state.location;
         console.log(formData);
         fetch(
             `https://api.betterdoctor.com/2016-03-01/doctors?name=${
                 formData.doctor
-            }&location=29.75020,-95.795104,100&limit=10&user_key=${key}`
+            }&location=${coordinates},20&limit=10&user_key=${key}`
         )
             .then((res) => res.json())
             .then((result) => {
