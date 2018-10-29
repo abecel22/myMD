@@ -44,9 +44,9 @@ class Doctors extends Component {
         const coordinates = this.state.location;
         console.log(formData);
         fetch(
-            `https://api.betterdoctor.com/2016-03-01/doctors?name=${
-                formData.doctor
-            }&location=${coordinates},20&limit=10&user_key=${key}`
+            `https://api.betterdoctor.com/2016-03-01/doctors?specialty_uid=${
+                formData.specialty
+            }&location=${coordinates},10&limit=20&user_key=${key}`
         )
             .then((res) => res.json())
             .then((result) => {

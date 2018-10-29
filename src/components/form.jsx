@@ -7,9 +7,9 @@ class Form extends Component {
                 <div className="form-group">
                     <input
                         className="form-control"
-                        id="doctor"
-                        name="doctor"
-                        placeholder="Find a Doc"
+                        id="specialty"
+                        name="specialty"
+                        placeholder="Enter a specialty"
                         onChange={this.props.onChange}
                     />
                 </div>
