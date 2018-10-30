@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class Cards extends Component {
+    capitalize = (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    };
+
     render() {
         return (
             <div>
@@ -8,25 +12,28 @@ class Cards extends Component {
                     <div className="card mb-3" key={result.uid}>
                         <div className="card-body">
                             <div className="row">
-                                <div className="col-sm">
+                                <div className="col-2">
                                     <img
                                         src={result.profile.image_url}
                                         alt=""
                                     />
                                 </div>
-                                <div className="col-sm">
+                                <div className="col-5">
                                     <h5 className="card-title">{`${
                                         result.profile.first_name
                                     } ${result.profile.last_name}`}</h5>
                                     <h6 className="card-subtitle text-muted">
-                                        {result.specialties[0].uid}
+                                        {this.capitalize(
+                                            result.specialties[0].uid
+                                        )}
                                     </h6>
-                                    <p>
-                                        {result.profile.bio.slice(0, 40)}{' '}
-                                        <a href="/">Read more..</a>
+                                    <p className="pt-3">
+                                        {result.profile.bio.slice(0, 75) +
+                                            '...'}
+                                        <a href="/">read more</a>
                                     </p>
                                 </div>
-                                <div className="col-sm">
+                                <div className="col-5">
                                     <ul className="list-group">
                                         <li className="list-group-item">
                                             {result.practices[0].name}
