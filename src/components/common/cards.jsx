@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Cards extends Component {
     capitalize = (str) => {
@@ -30,7 +31,9 @@ class Cards extends Component {
                                     <p className="pt-3">
                                         {result.profile.bio.slice(0, 75) +
                                             '...'}
-                                        <a href="/">read more</a>
+                                        <Link to="/doctorDetails">
+                                            read more
+                                        </Link>
                                     </p>
                                 </div>
                                 <div className="col-5">
