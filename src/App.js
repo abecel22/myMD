@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import NavBar from './components/navbar';
 import Doctors from './components/doctors';
 import DoctorDetails from './components/doctorDetails';
-
+import Clinics from './components/clinics';
 import './App.css';
 
 class App extends Component {
@@ -17,6 +17,7 @@ class App extends Component {
                             path="/doctorDetails"
                             component={DoctorDetails}
                         />
+                        <Route path="/clinics" component={Clinics} />
                         <Route path="/" component={Doctors} />
                     </Switch>
                 </div>
