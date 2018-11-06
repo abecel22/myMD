@@ -31,7 +31,9 @@ class Cards extends Component {
                                     <p className="pt-3">
                                         {result.profile.bio.slice(0, 75) +
                                             '...'}
-                                        <Link to="/doctorDetails">
+                                        <Link
+                                            to={`/doctorDetails/${result.uid}`}
+                                        >
                                             read more
                                         </Link>
                                     </p>

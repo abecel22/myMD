@@ -14,7 +14,7 @@ class App extends Component {
                 <div className="container">
                     <Switch>
                         <Route
-                            path="/doctorDetails"
+                            path="/doctorDetails/:id"
                             component={DoctorDetails}
                         />
                         <Route path="/clinics" component={Clinics} />
