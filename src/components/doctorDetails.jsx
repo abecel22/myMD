@@ -20,14 +20,37 @@ class DoctorDetails extends Component {
             });
     }
 
+    capitalize = (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    };
+
     render() {
         console.log(this.state.results.profile);
         const { results } = this.state;
         if (results.profile) {
             return (
                 <div className="container">
-                    <h1>Doctor Search Results</h1>
-                    <h3>{results.profile.first_name}</h3>
+                    <img
+                        className="mt-3"
+                        src={results.profile.image_url}
+                        alt=""
+                    />
+                    <h1 className="mt-3">{`${results.profile.first_name} ${
+                        results.profile.last_name
+                    }, ${results.profile.title}`}</h1>
+                    <h4 className="mb-3">
+                        {this.capitalize(results.specialties[0].uid)}
+                    </h4>
+                    <div className="body text-left">
+                        <h4>Professional Bio</h4>
+                        <p>{results.profile.bio}</p>
+                        <h4>Insurance Accepted</h4>
+                        <ul>
+                            {results.insurances.map((insurance) => (
+                                <li>{insurance.insurance_plan.name}</li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             );
         } else {
