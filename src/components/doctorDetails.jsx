@@ -24,12 +24,19 @@ class DoctorDetails extends Component {
         return str.charAt(0).toUpperCase() + str.slice(1);
     };
 
+    handleClick = () => {
+        console.log(this.props.history.goBack());
+    };
+
     render() {
         console.log(this.state.results.profile);
         const { results } = this.state;
         if (results.profile) {
             return (
                 <div className="container">
+                    <button onClick={this.handleClick} className="btn btn-dark">
+                        Back
+                    </button>
                     <img
                         className="mt-3"
                         src={results.profile.image_url}
@@ -44,10 +51,27 @@ class DoctorDetails extends Component {
                     <div className="body text-left">
                         <h4>Professional Bio</h4>
                         <p>{results.profile.bio}</p>
+                        <h4>Practice Name</h4>
+
+                        <p>{results.practices[0].name}</p>
+                        <p>
+                            {results.practices[0].visit_address.street} <br />
+                            {`${results.practices[0].visit_address.city}, ${
+                                results.practices[0].visit_address.state
+                            } ${results.practices[0].visit_address.zip}`}
+                        </p>
+                        <h4>Languages Spoken</h4>
+                        <p>
+                            {results.profile.languages.map((lan) => (
+                                <span>{lan.name}</span>
+                            ))}
+                        </p>
                         <h4>Insurance Accepted</h4>
-                        <ul>
-                            {results.insurances.map((insurance) => (
-                                <li>{insurance.insurance_plan.name}</li>
+                        <ul className="list-Columns">
+                            {results.insurances.map((insurance, index) => (
+                                <li key={index}>
+                                    {insurance.insurance_plan.name}
+                                </li>
                             ))}
                         </ul>
                     </div>

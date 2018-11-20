@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import NavBar from './components/navbar';
 import Doctors from './components/doctors';
 import DoctorDetails from './components/doctorDetails';
 import Clinics from './components/clinics';
+import NotFound from './components/notFound';
 import './App.css';
 
 class App extends Component {
@@ -18,7 +19,9 @@ class App extends Component {
                             component={DoctorDetails}
                         />
                         <Route path="/clinics" component={Clinics} />
-                        <Route path="/" component={Doctors} />
+                        <Route path="/not-found" component={NotFound} />
+                        <Route path="/" exact component={Doctors} />
+                        <Redirect to="not-found" />
                     </Switch>
                 </div>
             </div>
