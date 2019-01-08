@@ -29,14 +29,11 @@ class DoctorDetails extends Component {
     };
 
     render() {
-        console.log(this.state.results.profile);
+        // console.log(this.state.results.profile);
         const { results } = this.state;
         if (results.profile) {
             return (
                 <div className="container">
-                    <button onClick={this.handleClick} className="btn btn-dark">
-                        Back
-                    </button>
                     <img
                         className="mt-3"
                         src={results.profile.image_url}
@@ -45,7 +42,7 @@ class DoctorDetails extends Component {
                     <h1 className="mt-3">{`${results.profile.first_name} ${
                         results.profile.last_name
                     }, ${results.profile.title}`}</h1>
-                    <h4 className="mb-3">
+                    <h4 className="mb-5">
                         {this.capitalize(results.specialties[0].uid)}
                     </h4>
                     <div className="body text-left">
@@ -62,8 +59,8 @@ class DoctorDetails extends Component {
                         </p>
                         <h4>Languages Spoken</h4>
                         <p>
-                            {results.profile.languages.map((lan) => (
-                                <span>{lan.name}</span>
+                            {results.profile.languages.map((lan, index) => (
+                                <span key={index}>{lan.name}</span>
                             ))}
                         </p>
                         <h4>Insurance Accepted</h4>

@@ -56,6 +56,7 @@ class Doctors extends Component {
     };
 
     render() {
+        const { results } = this.state;
         return (
             <div className="container">
                 <h2>Find a Doctor</h2>
@@ -63,7 +64,7 @@ class Doctors extends Component {
                     onSubmit={this.handleSubmit}
                     onChange={this.handleChange}
                 />
-                <Results result={this.state.results} />
+                <Results result={results} />
             </div>
         );
     }
