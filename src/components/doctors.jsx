@@ -9,6 +9,13 @@ class Doctors extends Component {
         location: ''
     };
 
+    componentDidMount() {
+        let doctors = localStorage.getItem('doctors');
+        doctors = JSON.parse(doctors);
+        this.setState({ results: doctors });
+        console.log(doctors);
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         this.makeGeoAPICall();
@@ -52,6 +59,7 @@ class Doctors extends Component {
             .then((result) => {
                 const doctors = result.data;
                 this.setState({ results: doctors });
+                localStorage.setItem('doctors', JSON.stringify(doctors));
             });
     };
 

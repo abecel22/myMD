@@ -2,22 +2,18 @@ import React, { Component } from 'react';
 
 class DoctorDetails extends Component {
     state = {
-        results: []
+        results: [],
+        doctor: {}
     };
 
     componentDidMount() {
-        const docId = this.props.match.params.id;
-        const key = process.env.REACT_APP_SECRET_CODE;
+        const index = this.props.match.params.id;
 
-        fetch(
-            `https://api.betterdoctor.com/2016-03-01/doctors/${docId}?user_key=${key}`
-        )
-            .then((res) => res.json())
-            .then((result) => {
-                const results = result.data;
-                console.log(results);
-                this.setState({ results: results });
-            });
+        let doctors = localStorage.getItem('doctors');
+        doctors = JSON.parse(doctors);
+        const doctor = doctors[index];
+        this.setState({ doctor: doctor });
+        console.log(doctor);
     }
 
     capitalize = (str) => {
@@ -29,43 +25,43 @@ class DoctorDetails extends Component {
     };
 
     render() {
-        // console.log(this.state.results.profile);
-        const { results } = this.state;
-        if (results.profile) {
+        console.log(this.state.doctor.profile);
+        const { doctor } = this.state;
+        if (doctor.profile) {
             return (
                 <div className="container">
                     <img
                         className="mt-3"
-                        src={results.profile.image_url}
+                        src={doctor.profile.image_url}
                         alt=""
                     />
-                    <h1 className="mt-3">{`${results.profile.first_name} ${
-                        results.profile.last_name
-                    }, ${results.profile.title}`}</h1>
+                    <h1 className="mt-3">{`${doctor.profile.first_name} ${
+                        doctor.profile.last_name
+                    }, ${doctor.profile.title}`}</h1>
                     <h4 className="mb-5">
-                        {this.capitalize(results.specialties[0].uid)}
+                        {this.capitalize(doctor.specialties[0].uid)}
                     </h4>
                     <div className="body text-left">
                         <h4>Professional Bio</h4>
-                        <p>{results.profile.bio}</p>
+                        <p>{doctor.profile.bio}</p>
                         <h4>Practice Name</h4>
 
-                        <p>{results.practices[0].name}</p>
+                        <p>{doctor.practices[0].name}</p>
                         <p>
-                            {results.practices[0].visit_address.street} <br />
-                            {`${results.practices[0].visit_address.city}, ${
-                                results.practices[0].visit_address.state
-                            } ${results.practices[0].visit_address.zip}`}
+                            {doctor.practices[0].visit_address.street} <br />
+                            {`${doctor.practices[0].visit_address.city}, ${
+                                doctor.practices[0].visit_address.state
+                            } ${doctor.practices[0].visit_address.zip}`}
                         </p>
                         <h4>Languages Spoken</h4>
                         <p>
-                            {results.profile.languages.map((lan, index) => (
+                            {doctor.profile.languages.map((lan, index) => (
                                 <span key={index}>{lan.name}</span>
                             ))}
                         </p>
                         <h4>Insurance Accepted</h4>
                         <ul className="list-Columns">
-                            {results.insurances.map((insurance, index) => (
+                            {doctor.insurances.map((insurance, index) => (
                                 <li key={index}>
                                     {insurance.insurance_plan.name}
                                 </li>

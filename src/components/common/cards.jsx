@@ -9,7 +9,7 @@ class Cards extends Component {
     render() {
         return (
             <div>
-                {this.props.results.map((result) => (
+                {this.props.results.map((result, index) => (
                     <div className="card mb-3" key={result.uid}>
                         <div className="card-body">
                             <div className="row">
@@ -31,9 +31,7 @@ class Cards extends Component {
                                     <p className="pt-3">
                                         {result.profile.bio.slice(0, 75) +
                                             '...'}
-                                        <Link
-                                            to={`/doctorDetails/${result.uid}`}
-                                        >
+                                        <Link to={`/doctorDetails/${index}`}>
                                             read more
                                         </Link>
                                     </p>
