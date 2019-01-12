@@ -8,7 +8,6 @@ class DoctorDetails extends Component {
 
     componentDidMount() {
         const index = this.props.match.params.id;
-
         let doctors = localStorage.getItem('doctors');
         doctors = JSON.parse(doctors);
         const doctor = doctors[index];
@@ -18,10 +17,6 @@ class DoctorDetails extends Component {
 
     capitalize = (str) => {
         return str.charAt(0).toUpperCase() + str.slice(1);
-    };
-
-    handleClick = () => {
-        console.log(this.props.history.goBack());
     };
 
     render() {
