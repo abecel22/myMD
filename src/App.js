@@ -12,7 +12,7 @@ class App extends Component {
         return (
             <div className="App">
                 <NavBar />
-                <div className="container">
+                <div className="container-fluid">
                     <Switch>
                         <Route
                             path="/doctorDetails/:id"

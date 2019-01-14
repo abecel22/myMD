@@ -4,3 +4,21 @@
 .list-Columns {
     column-count: 2;
 }
+
+.link {
+    color: #212529;
+}
+
+.form-heading {
+    color: white;
+    padding: 3vh;
+}
+
+.form-container {
+    background-color: #2196f3;
+    padding: 2em 0;
+}
+
+.form-button {
+    background-color: #bbdefb;
+}

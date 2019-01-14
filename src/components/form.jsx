@@ -3,29 +3,31 @@ import React, { Component } from 'react';
 class Form extends Component {
     render() {
         return (
-            <form onSubmit={this.props.onSubmit} className="col-9 mx-auto">
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        id="specialty"
-                        name="specialty"
-                        placeholder="Enter a specialty"
-                        onChange={this.props.onChange}
-                    />
-                </div>
+            <form onSubmit={this.props.onSubmit} className="mr-5 ml-5">
+                <div className="form-row">
+                    <div className="col-sm-7 mx-auto mt-2">
+                        <input
+                            className="form-control"
+                            id="specialty"
+                            name="specialty"
+                            placeholder="Enter a specialty"
+                            onChange={this.props.onChange}
+                        />
+                    </div>
 
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        placeholder="Zip Code"
-                        id="zipCode"
-                        name="zipCode"
-                        onChange={this.props.onChange}
-                    />
-                </div>
+                    <div className="col-sm mx-auto mt-2">
+                        <input
+                            className="form-control"
+                            placeholder="Zip Code"
+                            id="zipCode"
+                            name="zipCode"
+                            onChange={this.props.onChange}
+                        />
+                    </div>
 
-                <div className="form-group">
-                    <button className="btn btn-dark btn-block">Find</button>
+                    <div className="ml-4 mx-auto mt-2">
+                        <button className="btn form-button">Find</button>
+                    </div>
                 </div>
             </form>
         );

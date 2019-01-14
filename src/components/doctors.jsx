@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import Form from './form';
 import Results from './results';
 
-import docImage from '../Assets/woman-3187087_1920.jpg';
-
-class Doctors extends React.Component {
+class Doctors extends Component {
     state = {
         formData: {},
         results: [],
@@ -68,18 +66,15 @@ class Doctors extends React.Component {
     render() {
         const { results } = this.state;
         return (
-            <div className="container">
-                <img
-                    src={docImage}
-                    className="img-fluid main-image"
-                    alt="Responsive"
-                />
-                <h2>Find a Doctor</h2>
-                <Form
-                    onSubmit={this.handleSubmit}
-                    onChange={this.handleChange}
-                />
-                <Results result={results} />
+            <div className="container-fluid">
+                <div className="form-container">
+                    <h2 className="form-heading">Find a Doctor</h2>
+                    <Form
+                        onSubmit={this.handleSubmit}
+                        onChange={this.handleChange}
+                    />
+                    <Results result={results} />
+                </div>
             </div>
         );
     }
