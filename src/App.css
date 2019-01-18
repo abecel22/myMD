@@ -22,3 +22,18 @@
 .form-button {
     background-color: #bbdefb;
 }
+
+.detail-container {
+    background: rgb(34, 193, 195);
+    background: linear-gradient(
+        0deg,
+        rgba(34, 193, 195, 1) 0%,
+        rgba(33, 150, 243, 1) 100%
+    );
+}
+
+.detail-info {
+    background: #ffffff;
+    padding: 4em 2em;
+    margin-top: 5em;
+}

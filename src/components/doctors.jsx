@@ -73,6 +73,8 @@ class Doctors extends Component {
                         onSubmit={this.handleSubmit}
                         onChange={this.handleChange}
                     />
+                </div>
+                <div className="results-container m-5">
                     <Results result={results} />
                 </div>
             </div>

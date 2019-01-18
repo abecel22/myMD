@@ -8,7 +8,9 @@ class Results extends Component {
         }
         return (
             <div>
-                {this.props.result.length > 0 && <h1>Doctor Search Results</h1>}
+                {this.props.result.length > 0 && (
+                    <h1 className="mb-5">Doctor Search Results</h1>
+                )}
 
                 <Cards results={this.props.result} />
             </div>
