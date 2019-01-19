@@ -6,13 +6,17 @@ class Form extends Component {
             <form onSubmit={this.props.onSubmit}>
                 <div className="form-row">
                     <div className="col-sm-7 mx-auto mt-2">
-                        <input
+                        <select
                             className="form-control"
                             id="specialty"
                             name="specialty"
                             placeholder="Enter a specialty"
                             onChange={this.props.onChange}
-                        />
+                        >
+                            <option>Allergist</option>
+                            <option>Cardiologist</option>
+                            <option>Pediatrician</option>
+                        </select>
                     </div>
 
                     <div className="col-sm mx-auto mt-2">

@@ -23,7 +23,7 @@ class Doctors extends Component {
 
     handleChange = ({ currentTarget: input }) => {
         const formData = { ...this.state.formData };
-        formData[input.name] = input.value;
+        formData[input.name] = input.value.toLowerCase();
         this.setState({ formData });
     };
 
