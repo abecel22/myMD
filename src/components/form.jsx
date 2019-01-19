@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Form extends Component {
     render() {
         return (
-            <form onSubmit={this.props.onSubmit} className="mr-5 ml-5">
+            <form onSubmit={this.props.onSubmit}>
                 <div className="form-row">
                     <div className="col-sm-7 mx-auto mt-2">
                         <input

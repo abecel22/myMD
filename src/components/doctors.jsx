@@ -68,13 +68,13 @@ class Doctors extends Component {
         return (
             <div className="container-fluid">
                 <div className="form-container">
-                    <h2 className="form-heading">Find a Doctor</h2>
+                    <h2 className="form-heading mb-3">Find a Doctor</h2>
                     <Form
                         onSubmit={this.handleSubmit}
                         onChange={this.handleChange}
                     />
                 </div>
-                <div className="results-container m-5">
+                <div className="results-container">
                     <Results result={results} />
                 </div>
             </div>
