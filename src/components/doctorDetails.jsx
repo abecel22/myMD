@@ -8,7 +8,7 @@ class DoctorDetails extends Component {
 
     componentDidMount() {
         const index = this.props.match.params.id;
-        let doctors = localStorage.getItem('doctors');
+        let doctors = sessionStorage.getItem('doctors');
         doctors = JSON.parse(doctors);
         const doctor = doctors[index];
         this.setState({ doctor: doctor });

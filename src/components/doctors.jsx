@@ -10,10 +10,9 @@ class Doctors extends Component {
     };
 
     componentDidMount() {
-        let doctors = localStorage.getItem('doctors');
+        let doctors = sessionStorage.getItem('doctors');
         doctors = JSON.parse(doctors);
         this.setState({ results: doctors });
-        console.log(doctors);
     }
 
     handleSubmit = (e) => {
@@ -59,7 +58,7 @@ class Doctors extends Component {
             .then((result) => {
                 const doctors = result.data;
                 this.setState({ results: doctors });
-                localStorage.setItem('doctors', JSON.stringify(doctors));
+                sessionStorage.setItem('doctors', JSON.stringify(doctors));
             });
     };
 

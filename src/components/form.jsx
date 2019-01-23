@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { specialties } from '../components/specialties';
 
 class Form extends Component {
     render() {
@@ -13,9 +14,9 @@ class Form extends Component {
                             placeholder="Enter a specialty"
                             onChange={this.props.onChange}
                         >
-                            <option>Allergist</option>
-                            <option>Cardiologist</option>
-                            <option>Pediatrician</option>
+                            {specialties.map((sp) => (
+                                <option key={sp}>{sp}</option>
+                            ))}
                         </select>
                     </div>
 
