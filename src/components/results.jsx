@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Cards from './common/cards';
+import doc1 from '../assets/doc1.png';
+import doc2 from '../assets/doc2.png';
 
 class Results extends Component {
     capitalize = (str) => {
@@ -8,7 +10,18 @@ class Results extends Component {
 
     render() {
         if (!this.props.result) {
-            return null;
+            return (
+                <div className="row">
+                    <div className="col-sm">
+                        <img src={doc1} alt="" />
+                        <h4 className="mt-4">Find doctors in your network!</h4>
+                    </div>
+                    <div className="col-sm">
+                        <img src={doc2} alt="" />
+                        <h4 className="mt-4">Book that physical today!</h4>
+                    </div>
+                </div>
+            );
         }
         return (
             <div>
