@@ -11,8 +11,10 @@ class Doctors extends Component {
 
     componentDidMount() {
         let doctors = sessionStorage.getItem('doctors');
+        let zip = sessionStorage.getItem('zip');
         doctors = JSON.parse(doctors);
-        this.setState({ results: doctors });
+        zip = JSON.parse(zip);
+        this.setState({ results: doctors, formData: zip });
     }
 
     handleSubmit = (e) => {
@@ -29,6 +31,7 @@ class Doctors extends Component {
     makeGeoAPICall = () => {
         const geoKey = process.env.REACT_APP_SECRET_KEY;
         const formData = this.state.formData;
+        sessionStorage.setItem('zip', JSON.stringify(formData));
         fetch(
             `https://maps.googleapis.com/maps/api/geocode/json?address=${
                 formData.zipCode
@@ -36,7 +39,6 @@ class Doctors extends Component {
         )
             .then((res) => res.json())
             .then((result) => {
-                console.log(result);
                 const latitude = result.results[0].geometry.location.lat;
                 const longitude = result.results[0].geometry.location.lng;
                 this.setState({ location: `${latitude},${longitude}` });
@@ -52,18 +54,18 @@ class Doctors extends Component {
         fetch(
             `https://api.betterdoctor.com/2016-03-01/doctors?specialty_uid=${
                 formData.specialty
-            }&location=${coordinates},10&limit=20&user_key=${key}`
+            }&location=${coordinates},15&limit=30&user_key=${key}`
         )
             .then((res) => res.json())
             .then((result) => {
                 const doctors = result.data;
-                this.setState({ results: doctors });
                 sessionStorage.setItem('doctors', JSON.stringify(doctors));
+                this.setState({ results: doctors });
             });
     };
 
     render() {
-        const { results } = this.state;
+        const { results, formData } = this.state;
         return (
             <div className="container-fluid">
                 <div className="form-container">
@@ -74,7 +76,7 @@ class Doctors extends Component {
                     />
                 </div>
                 <div className="results-container">
-                    <Results result={results} />
+                    <Results result={results} formData={formData} />
                 </div>
             </div>
         );
