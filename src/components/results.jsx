@@ -11,14 +11,14 @@ class Results extends Component {
     render() {
         if (!this.props.result) {
             return (
-                <div className="row">
+                <div className="row icons-container">
                     <div className="col-sm">
                         <img src={doc1} alt="" />
                         <h4 className="mt-4">Find doctors in your network!</h4>
                     </div>
                     <div className="col-sm">
                         <img src={doc2} alt="" />
-                        <h4 className="mt-4">Book that physical today!</h4>
+                        <h4 className="mt-4">Book a physical today!</h4>
                     </div>
                 </div>
             );

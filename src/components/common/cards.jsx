@@ -13,13 +13,13 @@ class Cards extends Component {
                     <div className="card mb-3" key={result.uid}>
                         <div className="card-body">
                             <div className="row">
-                                <div className="col-2">
+                                <div className="col-sm-2">
                                     <img
                                         src={result.profile.image_url}
                                         alt=""
                                     />
                                 </div>
-                                <div className="col-5">
+                                <div className="col-sm-5">
                                     <h5 className="card-title">{`${
                                         result.profile.first_name
                                     } ${result.profile.last_name}`}</h5>
@@ -36,7 +36,7 @@ class Cards extends Component {
                                         </Link>
                                     </p>
                                 </div>
-                                <div className="col-5">
+                                <div className="col-sm-5">
                                     <ul className="list-group">
                                         <li className="list-group-item">
                                             {result.practices[0].name}
