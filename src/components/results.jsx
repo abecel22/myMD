@@ -12,11 +12,11 @@ class Results extends Component {
         if (!this.props.result) {
             return (
                 <div className="row icons-container">
-                    <div className="col-sm">
+                    <div className="col-sm mt-3">
                         <img src={doc1} alt="" />
                         <h4 className="mt-4">Find doctors in your network!</h4>
                     </div>
-                    <div className="col-sm">
+                    <div className="col-sm mt-3">
                         <img src={doc2} alt="" />
                         <h4 className="mt-4">Book a physical today!</h4>
                     </div>
