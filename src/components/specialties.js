@@ -1,13 +1,10 @@
 module.exports = {
     specialties: [
-        'Allergist',
         'Anesthesiologist',
-        'Audiologist',
         'Cardiologist',
         'Chiropractor',
         'Dermatologist',
         'Endocrinologist',
-        'Family Practitioner',
         'Gastroenterologist',
         'General Practitioner',
         'General Surgeon',
