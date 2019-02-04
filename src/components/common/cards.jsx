@@ -6,6 +6,15 @@ class Cards extends Component {
         return str.charAt(0).toUpperCase() + str.slice(1);
     };
 
+    formatPhoneNumber = (phoneNumberString) => {
+        var cleaned = ('' + phoneNumberString).replace(/\D/g, '');
+        var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+        if (match) {
+            return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+        }
+        return null;
+    };
+
     render() {
         return (
             <div>
@@ -61,8 +70,10 @@ class Cards extends Component {
                                         <li className="list-group-item">
                                             Phone:
                                             {' ' +
-                                                result.practices[0].phones[0]
-                                                    .number}
+                                                this.formatPhoneNumber(
+                                                    result.practices[0]
+                                                        .phones[0].number
+                                                )}
                                         </li>
                                     </ul>
                                 </div>
