@@ -7,6 +7,7 @@ class DoctorDetails extends Component {
     };
 
     componentDidMount() {
+        //Checks for session storage and adds to state. Reduces call to doc API.
         const index = this.props.match.params.id;
         let doctors = sessionStorage.getItem('doctors');
         doctors = JSON.parse(doctors);

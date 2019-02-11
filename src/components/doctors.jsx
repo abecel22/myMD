@@ -10,6 +10,7 @@ class Doctors extends Component {
     };
 
     componentDidMount() {
+        //Checks for session storage and adds to state. Reduces call to doc API.
         let doctors = sessionStorage.getItem('doctors');
         let zip = sessionStorage.getItem('zip');
         doctors = JSON.parse(doctors);
@@ -29,6 +30,7 @@ class Doctors extends Component {
     };
 
     makeGeoAPICall = () => {
+        //Makes call to Google geolocation based on zip code. Doc API does not take zip code.
         const geoKey = process.env.REACT_APP_SECRET_KEY;
         const formData = this.state.formData;
         sessionStorage.setItem('zip', JSON.stringify(formData));
@@ -47,6 +49,7 @@ class Doctors extends Component {
     };
 
     makeAPICall = () => {
+        //Makes call to doc API based on geolaction and form data.
         const key = process.env.REACT_APP_SECRET_CODE;
         const formData = this.state.formData;
         const coordinates = this.state.location;

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import NavBar from './components/navbar';
 import Doctors from './components/doctors';
 import DoctorDetails from './components/doctorDetails';
-import Clinics from './components/clinics';
-import NotFound from './components/notFound';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import './App.css';
 
 class App extends Component {
@@ -13,16 +12,29 @@ class App extends Component {
             <div className="App">
                 <NavBar />
                 <div className="container-fluid">
-                    <Switch>
-                        <Route
-                            path="/doctorDetails/:id"
-                            component={DoctorDetails}
-                        />
-                        <Route path="/clinics" component={Clinics} />
-                        <Route path="/not-found" component={NotFound} />
-                        <Route path="/" exact component={Doctors} />
-                        <Redirect to="not-found" />
-                    </Switch>
+                    <Route
+                        render={({ location }) => (
+                            <TransitionGroup>
+                                <CSSTransition
+                                    key={location.key}
+                                    classNames="fade"
+                                    timeout={300}
+                                >
+                                    <Switch location={location}>
+                                        <Route
+                                            path="/doctorDetails/:id"
+                                            component={DoctorDetails}
+                                        />
+                                        <Route
+                                            path="/"
+                                            exact
+                                            component={Doctors}
+                                        />
+                                    </Switch>
+                                </CSSTransition>
+                            </TransitionGroup>
+                        )}
+                    />
                 </div>
             </div>
         );
