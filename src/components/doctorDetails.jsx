@@ -29,6 +29,7 @@ class DoctorDetails extends Component {
           <div className="container">
             <div className="detail-info mt-5">
               <img
+                className="detail-info_img"
                 src={doctor.profile.image_url}
                 alt={`Dr. ${
                   doctor.profile.last_name

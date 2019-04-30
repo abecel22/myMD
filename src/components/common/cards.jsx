@@ -29,6 +29,7 @@ class Cards extends Component {
               <div className="row">
                 <div className="col-sm-2">
                   <img
+                    className="card-body_img"
                     src={result.profile.image_url}
                     alt={`Dr. ${
                       result.profile.last_name
